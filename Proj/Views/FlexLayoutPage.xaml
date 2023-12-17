@@ -1,0 +1,72 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:Proj"
+             mc:Ignorable="d"
+             x:Class="Proj.FlexLayoutPage"
+             Title="Flex Layout Page">
+
+    <!-- ResourceDictionary directly within ContentPage.Resources -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="LabelTextColor">#877421</Color>
+            <Style x:Key="TreeItemLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource LabelTextColor}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <local:FlexLayoutViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <FlexLayout Direction="Column"
+                    AlignItems="Center">
+
+            <CollectionView x:Name="TreeView"
+                            ItemsSource="{Binding Trees}"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="30"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <FlexLayout Direction="Row"
+                                    AlignItems="Center"
+                                    JustifyContent="Center">
+
+                            <!-- Tree Image -->
+                            <Image Source="{Binding Photo}"
+                                   Aspect="AspectFill"
+                                   HeightRequest="150"
+                                   WidthRequest="150"
+                                   FlexLayout.Basis="25%" />
+
+
+                            <!-- Tree Details -->
+                            <StackLayout FlexLayout.Basis="75%"
+                                         VerticalOptions="CenterAndExpand">
+                                <Label Text="{Binding Name}"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Center"
+                                       Style="{StaticResource TreeItemLabelStyle}" />
+                                <Label Text="{Binding GrowsOn}"
+                                       HorizontalOptions="Center"
+                                       Style="{StaticResource TreeItemLabelStyle}" />
+                                <Label Text="{Binding Season}"
+                                       HorizontalOptions="Center"
+                                       Style="{StaticResource TreeItemLabelStyle}" />
+                            </StackLayout>
+                        </FlexLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>

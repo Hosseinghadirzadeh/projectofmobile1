@@ -1,0 +1,31 @@
+﻿<!-- HorizontalStackLayoutPage.xaml -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:Proj"
+             mc:Ignorable="d"
+             x:Class="Proj.HorizontalStackLayoutPage"
+             Title="Horizontal StackLayout Page | Scroll photos">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <!-- Replace StackLayout with CollectionView -->
+                <CollectionView ItemsSource="{Binding Trees}"
+                                ItemsLayout="HorizontalList"
+                                HeightRequest="500"
+                                WidthRequest="500">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Photo}"
+                                   Aspect="AspectFill"
+                                   HeightRequest="500"
+                                   WidthRequest="500"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </HorizontalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

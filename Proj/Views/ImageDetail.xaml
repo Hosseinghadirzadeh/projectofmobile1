@@ -1,0 +1,19 @@
+﻿<!-- ImageDetailPage.xaml -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:Proj"
+             mc:Ignorable="d"
+             x:Class="Proj.ImageDetail"
+             Title="Image Detail Page">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Image Source="{Binding Photo}" Aspect="AspectFill" HeightRequest="300" />
+            <Label Text="{Binding Name}" FontAttributes="Bold" />
+            <Label Text="{Binding GrowsOn}" />
+            <Label Text="{Binding Season}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
